@@ -7,18 +7,20 @@
 	<link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 70%;
-      margin: auto;
-  }
-  .my-btn {
-  	color:black !important;
-  }
- 
-  </style>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style>
+		.carousel-inner > .item > img,
+		.carousel-inner > .item > a > img {
+		  width: 100%;
+		}
+		.my-btn {
+			color:black !important;
+		}
+		.carousel-inner {
+			margin-bottom: 50px;
+		}
+
+	</style>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -29,8 +31,8 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Collections</a></li>
-        <li><a href="#">Sign in</a></li>
+        <li><a href="collections.php">Collections</a></li>
+        <li><a href="signin.php">Sign in</a></li>
       </ul>
     </div>
   </div>
@@ -54,7 +56,7 @@
         <img src="pic/1.jpg" alt="Chania" width="838" height="552">
         <div class="carousel-caption">
           <h3>Something Sweet</h3>
-          <p><a href="#" class="btn btn-link my-btn"><< SHOP NOW >></a></p>
+          <p><a href="collections.php" class="btn btn-link my-btn"><< New Collection >></a></p>
         </div>
       </div>
 
@@ -62,7 +64,7 @@
         <img src="pic/2.jpg" alt="Chania" width="838" height="552">
         <div class="carousel-caption">
           <h3>Something Sweet</h3>
-          <p><a href="#" class="btn btn-link my-btn"> << SHOP NOW >> </a></p>
+          <p><a href="collections.php" class="btn btn-link my-btn"> << New Collection >> </a></p>
         </div>
       </div>
     
@@ -70,7 +72,7 @@
         <img src="pic/3.jpg" alt="Flower" width="838" height="552">
         <div class="carousel-caption">
           <h3>Something Sweet</h3>
-          <p><a href="#" class="btn btn-link my-btn"><< SHOP NOW >></a></p>
+          <p><a href="collections.php" class="btn btn-link my-btn"><< New Collection >></a></p>
         </div>
       </div>
 
@@ -78,7 +80,7 @@
         <img src="pic/4.jpg" alt="Flower" width="838" height="552">
         <div class="carousel-caption">
           <h3>Something Sweet</h3>
-          <p><a href="#" class="btn btn-link my-btn"> << SHOP NOW >></a></p>
+          <p><a href="collections.php" class="btn btn-link my-btn"> << New Collection >></a></p>
         </div>
       </div>
   
