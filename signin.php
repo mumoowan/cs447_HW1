@@ -20,7 +20,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="collections.php">Collections</a></li>
-        <li><a href="#">Sign in</a></li>
+        <li class="active"><a href="#">Sign in</a></li>
       </ul>
     </div>
   </div>
