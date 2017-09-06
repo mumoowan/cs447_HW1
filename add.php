@@ -34,7 +34,6 @@
     </div>
   </div>
 </nav>
-</head>
 	
 	<div class="container">
    	<div class="row">
@@ -74,12 +73,10 @@
 	    <img id="blah" src="#" alt="your image" />
     </div>
 
-    <div class="col-sm-7 col-sm-offset-4" class="margin-bottom">
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="reset" class="btn btn-default">Cancel</button>
+    <div class="col-sm-6 col-sm-offset-3" style="text-align: center;">
+    <div class="form-group" style="margin-top:16px">
+      <button type="reset" class="btn btn-default">Cancel</button>
         <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
     </div>
 
     </div>
@@ -93,6 +90,8 @@
 
 		        reader.onload = function (e) {
 		            $('#blah').attr('src', e.target.result);
+		            $('#blah').attr('width', "350px");
+		            $('#blah').attr('height', "350px");
 		        }
 
 		        reader.readAsDataURL(input.files[0]);
