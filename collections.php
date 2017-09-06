@@ -1,3 +1,10 @@
+<?php
+
+    if(isset($_POST["edit"])) {
+        header( "Location: edit.php" );
+        exit(0);
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
 	  .margin-bottom {
@@ -35,14 +43,19 @@
 
 <div class="container">
    <div class="row">
-    <div class="col-sm-4"> 
+    <div class="col-sm-4" style="margin-bottom: 16px"> 
     	<img src="pic/earring2.jpg" width="350" height="350" class="margin-bottom">
     	<p> Name : Where Is Home Earrings </p>
     	<p> Price : 300 Bath. </p>
     	<p>Product Code : P000BCLI</p>
     	<p>Amount : 12</p>
+        <form action="" method="POST">
+            <button type="submit" class="btn btn-default btn-sm">Edit</button>
+            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
+        </form>
     </div>
-    <div class="col-sm-4">
+
+    <div class="col-sm-4" style="margin-bottom: 16px">
   
     	<img src="pic/earring3.jpg" width="350" height="350" class="margin-bottom">
     
@@ -50,8 +63,13 @@
     	<p> Price : 300 Bath.</p>
     	<p>Product Code : P000BFQJ</p>
     	<p>Amount : 3</p>
+        <form action="" method="POST">
+            <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
+            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
+        </form>
     </div>
-    <div class="col-sm-4"> 
+
+    <div class="col-sm-4" style="margin-bottom: 16px"> 
     
     	<img src="pic/earring1.jpg" width="350" height="350" class="margin-bottom">
   
@@ -59,7 +77,12 @@
     	<p> Price : 365 Bath. </p>
     	<p>Product Code : P000BCLG </p>
     	<p>Amount : 22</p>
+        <form action="" method="POST">
+            <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
+            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
+        </form>
     </div>
+
     <div class="col-sm-4"> 
     	
     	<img src="pic/earring4.jpg" width="350" height="350" class="margin-bottom">
@@ -68,7 +91,12 @@
     	<p> Price : 460 Bath. </p>
     	<p>Product Code : P000BCZW</p>
     	<p>Amount : 8</p>
+         <form action="" method="POST">
+            <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
+            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
+        </form>
     </div>
+
     <div class="col-sm-4">
     	
     	<img src="pic/earring5.jpg" width="350" height="350"class="margin-bottom">
@@ -77,6 +105,10 @@
     	<p> Price : 365 Bath.</p>
     	<p>Product Code : P000BCJF </p>
     	<p>Amount : 10</p>
+         <form action="" method="POST">
+            <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
+            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
+        </form>
     </div>
     <div class="col-sm-4"> 
     	
@@ -86,6 +118,10 @@
     	<p> Price : 395 Bath.</p>
     	<p>Product code : P000BFDU</p>
     	<p>Amount : 15</p>
+         <form action="" method="POST">
+            <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
+            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
+        </form>
     </div>
 
 
