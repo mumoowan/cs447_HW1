@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +35,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="collections.php">Collections</a></li>
-        <li><a href="signin.php">Sign in</a></li>
+        <li>
+          <?php if(isset($_SESSION["username"])) { ?>
+            <a href="#"><?php echo $_SESSION['username'] ?></a>
+          <?php } else { ?>
+            <a href="signin.php">Sign in</a>
+          <?php } ?>
+        </li>
       </ul>
     </div>
   </div>
