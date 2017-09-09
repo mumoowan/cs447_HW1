@@ -1,3 +1,30 @@
+<?php
+
+  session_start();
+
+  if(isset($_SESSION["username"])) {
+    header("location: index.php");
+    exit(0);
+  }
+
+  require "query/user.php";
+
+  $userModel = new User();
+
+  if(isset($_POST['signIn'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $signInResult = $userModel->signIn($username, $password);
+
+    if($signInResult->rowCount()) {
+      $user = $signInResult->fetch();
+      $_SESSION['username'] = $user["username"];
+      header("location: index.php");
+      exit(0);
+    }
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,23 +56,20 @@
 <div class="container">
    <div class="row">
 
-    <div class="col-sm-4 col-sm-offset-4">
-    	<h1>Sign in</h1>
-  		<div class="form-group">
- 		<label class="control-label" for="focusedInput">Username</label>
-  		<input class="form-control" id="focusedInput" type="text" value="">
-		</div>
-    </div>
-    <div class="col-sm-4 col-sm-offset-4">
-  		<div class="form-group">
- 		<label class="control-label" for="focusedInput">Password</label>
-  		<input class="form-control" id="focusedInput" type="password" value="">
-		</div>
-    </div>
-
-	 <div class="col-sm-4 col-sm-offset-4">
-  		<a href="collections.php" class="btn btn-primary btn-sm btn-block">Sign in</a>
-    </div>
+    <form method="POST" action="">
+      <div class="col-sm-4 col-sm-offset-4">
+        <h1>Sign in</h1>
+          <div class="form-group">
+            <label class="control-label" for="focusedInput">Username</label>
+            <input class="form-control" name="username" id="focusedInput" type="text" value="">
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="focusedInput">Password</label>
+            <input class="form-control" name="password" id="focusedInput" type="password" value="">
+          </div>
+          <button name="signIn" class="btn btn-primary btn-sm btn-block">Sign in</button>
+      </div>
+    </form>
 
 
 
