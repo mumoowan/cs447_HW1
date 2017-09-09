@@ -1,8 +1,28 @@
 <?php
+    session_start();
+
+    require "query/product.php";
+
+    $productModel = new Product();
+
+    $products = $productModel->readProduct();
+
+    $products = $products->fetchAll();
 
     if(isset($_POST["edit"])) {
         header( "Location: edit.php" );
         exit(0);
+    }
+
+    if(isset($_POST["delete"])) {
+        $productName = $_POST["nameOfProduct"];
+
+        $result = $productModel->deleteProduct($productName);
+
+        if($result->rowCount()) {
+            header( "Location: collections.php" );
+            exit(0);
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -32,9 +52,17 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="add.php">Add</a></li>
+        <?php if(isset($_SESSION["username"])) { ?>
+            <li><a href="add.php">Add</a></li>
+        <?php } ?>
         <li class="active"><a href="#">Collections</a></li>
-        <li><a href="signin.php">Sign in</a></li>
+        <li>
+          <?php if(isset($_SESSION["username"])) { ?>
+            <a href="#"><?php echo $_SESSION['username'] ?></a>
+          <?php } else { ?>
+            <a href="signin.php">Sign in</a>
+          <?php } ?>
+        </li>
       </ul>
     </div>
   </div>
@@ -43,88 +71,22 @@
 
 <div class="container">
    <div class="row">
+   <?php foreach($products as $product) { ?>
     <div class="col-sm-4" style="margin-bottom: 16px"> 
-    	<img src="pic/earring2.jpg" width="350" height="350" class="margin-bottom">
-    	<p> Name : Where Is Home Earrings </p>
-    	<p> Price : 300 Bath. </p>
-    	<p>Product Code : P000BCLI</p>
-    	<p>Amount : 12</p>
-        <form action="" method="POST">
-            <button type="submit" class="btn btn-default btn-sm">Edit</button>
-            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
-        </form>
+    	<img src="<?php echo $product['imageurl'] ?>" width="350" height="350" class="margin-bottom">
+    	<p> Name : <?php echo $product["name"] ?> </p>
+    	<p> Price : <?php echo $product["price"] ?> Bath. </p>
+    	<p> Detail : <?php echo $product["detail"] ?></p>
+    	<p> Amount : <?php echo $product["amount"] ?></p>
+        <?php if(isset($_SESSION["username"])) { ?>
+            <form action="" method="POST">
+                <input type="hidden" name="nameOfProduct" value="<?php echo $product['name'] ?>">
+                <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
+                <button type="submit" name="delete" class="btn btn-primary btn-sm">Delete</button>
+            </form>
+        <?php } ?>
     </div>
-
-    <div class="col-sm-4" style="margin-bottom: 16px">
-  
-    	<img src="pic/earring3.jpg" width="350" height="350" class="margin-bottom">
-    
-    	<p> Name : Unmatched Love Earrings </p>
-    	<p> Price : 300 Bath.</p>
-    	<p>Product Code : P000BFQJ</p>
-    	<p>Amount : 3</p>
-        <form action="" method="POST">
-            <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
-            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
-        </form>
-    </div>
-
-    <div class="col-sm-4" style="margin-bottom: 16px"> 
-    
-    	<img src="pic/earring1.jpg" width="350" height="350" class="margin-bottom">
-  
-    	<p> Name : Spring Fantasy Earrings </p>
-    	<p> Price : 365 Bath. </p>
-    	<p>Product Code : P000BCLG </p>
-    	<p>Amount : 22</p>
-        <form action="" method="POST">
-            <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
-            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
-        </form>
-    </div>
-
-    <div class="col-sm-4"> 
-    	
-    	<img src="pic/earring4.jpg" width="350" height="350" class="margin-bottom">
- 
-    	<p> Name : My Mind's Flower Earrings </p>
-    	<p> Price : 460 Bath. </p>
-    	<p>Product Code : P000BCZW</p>
-    	<p>Amount : 8</p>
-         <form action="" method="POST">
-            <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
-            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
-        </form>
-    </div>
-
-    <div class="col-sm-4">
-    	
-    	<img src="pic/earring5.jpg" width="350" height="350"class="margin-bottom">
-
-    	<p> Name : Miss Ya Boy Earrings </p>
-    	<p> Price : 365 Bath.</p>
-    	<p>Product Code : P000BCJF </p>
-    	<p>Amount : 10</p>
-         <form action="" method="POST">
-            <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
-            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
-        </form>
-    </div>
-    <div class="col-sm-4"> 
-    	
-    	<img src="pic/earring6.jpg" width="350" height="350" class="margin-bottom">
-
-    	<p> Name : My Little Dandelion Earrings </p>
-    	<p> Price : 395 Bath.</p>
-    	<p>Product code : P000BFDU</p>
-    	<p>Amount : 15</p>
-         <form action="" method="POST">
-            <button type="submit" name="edit" class="btn btn-default btn-sm">Edit</button>
-            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
-        </form>
-    </div>
-
-
+    <?php } ?>
 </div>
 </div>
 </div>
