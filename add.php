@@ -1,3 +1,11 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION["username"])) {
+      header( "Location: collections.php" );
+      exit(0);
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +37,7 @@
         
       	<li class="active"><a href="add.php">Add</a></li>
         <li><a href="collections.php">Collections</a></li>
-        <li><a href="signin.php">Sign in</a></li>
+        <li><a href="#"><?php echo $_SESSION['username'] ?></a></li>
       </ul>
     </div>
   </div>
@@ -42,34 +50,34 @@
      <h1>Add</h1>
     	<div class="form-group">
    			<label class="control-label" for="focusedInput">Product Name</label>
-   			<input class="form-control" id="focusedInput" type="text" value="">
+   			<input class="form-control" id="focusedInput" type="text" name="productName" value="">
   		</div>
     </div>
 
     <div class="col-sm-6 col-sm-offset-3">
    		<div class="form-group">
   			<label class="control-label" for="focusedInput">Price</label>
-    		<input class="form-control" id="focusedInput" type="text" value="">
+    		<input class="form-control" id="focusedInput" type="text" name="price" value="">
   		</div>
     </div>
 
     <div class="col-sm-6 col-sm-offset-3">
      	<div class="form-group">
         	<label for="textArea" class="control-label">Detail</label>
-          	<textarea class="form-control" rows="3" id="textArea"></textarea>
+          	<textarea class="form-control" rows="3" id="textArea" name="detail" ></textarea>
         </div>
     </div>
     
     <div class="col-sm-6 col-sm-offset-3">
    		<div class="form-group">
   			<label class="control-label" for="focusedInput">Amount</label>
-    		<input class="form-control" id="focusedInput" type="text" value="">
+    		<input class="form-control" id="focusedInput" type="text" name="amount" value="">
   		</div>
     </div>
     
     <div class="col-sm-6 col-sm-offset-3">
     	<label class="control-label" for="focusedInput">Image</label>
-	    <input type='file' id="imgInp" />
+	    <input type='file' name="image" id="imgInp" />
 	    <img id="blah" src="#" alt="your image" />
     </div>
 
@@ -82,6 +90,7 @@
     </div>
     </div>
 </body>
+
 <script>
 		function readURL(input) {
 
