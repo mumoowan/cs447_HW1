@@ -10,7 +10,9 @@
     $products = $products->fetchAll();
 
     if(isset($_POST["edit"])) {
-        header( "Location: edit.php" );
+        $productName = $_POST["nameOfProduct"];
+
+        header( "Location: edit.php?name=". $productName );
         exit(0);
     }
 
@@ -75,7 +77,7 @@
     <div class="col-sm-4" style="margin-bottom: 16px"> 
     	<img src="<?php echo $product['imageurl'] ?>" width="350" height="350" class="margin-bottom">
     	<p> Name : <?php echo $product["name"] ?> </p>
-    	<p> Price : <?php echo $product["price"] ?> Bath. </p>
+    	<p> Price : <?php echo number_format($product["price"]) ?> Bath. </p>
     	<p> Detail : <?php echo $product["detail"] ?></p>
     	<p> Amount : <?php echo $product["amount"] ?></p>
         <?php if(isset($_SESSION["username"])) { ?>
